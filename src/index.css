@@ -1,0 +1,179 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --primary-red: #C92536;
+    --primary-grey: #54585A;
+  }
+
+  body {
+    background-color: rgb(249 250 251);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    color: rgb(31 41 55);
+  }
+}
+
+@layer components {
+  .nav-link {
+    position: relative;
+    color: rgb(55 65 81);
+    transition: color 0.3s;
+  }
+
+  .nav-link:hover {
+    color: #C92536;
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: #C92536;
+    left: 0;
+    bottom: -4px;
+    transition: width 0.3s;
+  }
+
+  .nav-link:hover::after {
+    width: 100%;
+  }
+
+  .btn-primary {
+    background-color: #C92536;
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.375rem;
+    transition: all 0.3s;
+  }
+
+  .btn-primary:hover {
+    background-color: #a61e2c;
+    transform: scale(1.05);
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  }
+
+  .card {
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+    padding: 1.5rem;
+    transition: all 0.3s;
+  }
+
+  .card:hover {
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+    transform: translateY(-4px);
+  }
+
+  .section-title {
+    font-size: 1.875rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    position: relative;
+  }
+
+  .section-title::after {
+    content: '';
+    position: absolute;
+    width: 5rem;
+    height: 4px;
+    background-color: #C92536;
+    left: 0;
+    bottom: -8px;
+  }
+
+  /* Navbar Styles */
+  .nav-link {
+    @apply font-medium text-gray-700 hover:text-[#C92536] transition-colors relative;
+  }
+
+  .nav-link::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-[#C92536] transition-all duration-300;
+  }
+
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+
+  /* Background Grid Pattern */
+  .bg-grid-pattern {
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.1) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  .mega-menu {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px);
+    transition: all 0.3s;
+  }
+
+  .mega-menu.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  /* Service Card Hover Effects */
+  .service-card {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+  }
+
+  .service-card:hover {
+    transform: translateY(-8px);
+  }
+
+  .service-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 4px;
+    background-color: #C92536;
+    transition: width 0.3s;
+  }
+
+  .service-card:hover::after {
+    width: 100%;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { 
+    opacity: 0; 
+    transform: translateY(20px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+@keyframes slideIn {
+  from { 
+    transform: translateX(-100%); 
+  }
+  to { 
+    transform: translateX(0); 
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+.animate-slideIn {
+  animation: slideIn 0.5s ease-out forwards;
+}

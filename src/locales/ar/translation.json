@@ -1,0 +1,29 @@
+{
+  "navigation": {
+    "home": "الرئيسية",
+    "services": "الخدمات",
+    "exportersDirectory": "دليل المصدرين",
+    "exhibitions": "المعارض",
+    "mediaCenter": "المركز الإعلامي",
+    "news": "الأخبار",
+    "photos": "معرض الصور",
+    "videos": "معرض الفيديو",
+    "publications": "المنشورات",
+    "contactUs": "اتصل بنا",
+    "aboutUs": "من نحن",
+    "getStarted": "ابدأ الآن",
+    "search": "بحث",
+    "language": "English"
+  },
+  "services": {
+    "exportCredit": "تأمين الصادرات",
+    "exportFacilitation": "تسهيل التصدير",
+    "shippingLogistics": "الشحن والخدمات اللوجستية",
+    "marketResearch": "أبحاث السوق",
+    "exportTraining": "التدريب على التصدير",
+    "retailBuyer": "مبادرة تجار التجزئة",
+    "exportFinancing": "تمويل الصادرات",
+    "tradeShows": "المعارض التجارية",
+    "internationalMarketing": "التسويق الدولي"
+  }
+}

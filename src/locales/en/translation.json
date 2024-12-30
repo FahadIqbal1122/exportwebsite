@@ -1,0 +1,29 @@
+{
+  "navigation": {
+    "home": "Home",
+    "services": "Services",
+    "exportersDirectory": "Exporter's Directory",
+    "exhibitions": "Exhibitions",
+    "mediaCenter": "Media Center",
+    "news": "News",
+    "photos": "Photo Gallery",
+    "videos": "Video Gallery",
+    "publications": "Publications",
+    "contactUs": "Contact Us",
+    "aboutUs": "About Us",
+    "getStarted": "Get Started",
+    "search": "Search",
+    "language": "العربية"
+  },
+  "services": {
+    "exportCredit": "Export Credit Insurance",
+    "exportFacilitation": "Export Facilitation",
+    "shippingLogistics": "Shipping & Logistics",
+    "marketResearch": "Market Research",
+    "exportTraining": "Export Training",
+    "retailBuyer": "Retail Buyer Initiative",
+    "exportFinancing": "Export Financing",
+    "tradeShows": "Trade Shows",
+    "internationalMarketing": "International Marketing"
+  }
+}
