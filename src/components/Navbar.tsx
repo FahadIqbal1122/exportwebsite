@@ -12,7 +12,15 @@ const Navbar = () => {
   const [isServiceMenuOpen, setIsServiceMenuOpen] = useState(false);
   const [isMediaMenuOpen, setIsMediaMenuOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
   const { t, i18n } = useTranslation();
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Implement search logic here
+    console.log('Searching for:', searchQuery);
+  };
 
   return (
     <nav className="fixed w-full z-50 bg-white shadow-md">
@@ -88,7 +96,7 @@ const Navbar = () => {
 
               {/* Media Center Mega Menu */}
               <div 
-                className="static"
+                className="relative"
                 onMouseEnter={() => setIsMediaMenuOpen(true)}
                 onMouseLeave={() => setIsMediaMenuOpen(false)}
               >
@@ -101,7 +109,7 @@ const Navbar = () => {
 
                 <AnimatePresence>
                   {isMediaMenuOpen && (
-                    <div className="fixed left-0 right-0 w-full bg-white shadow-lg" style={{ top: '64px' }}>
+                    <div className="absolute top-full left-0 right-0 bg-white shadow-lg z-50">
                       <MediaMegaMenu
                         isOpen={isMediaMenuOpen}
                         onClose={() => setIsMediaMenuOpen(false)}
@@ -121,21 +129,26 @@ const Navbar = () => {
             </div>
           </div>
 
-          {/* Right - Search & Language */}
-          <div className="hidden lg:flex lg:items-center lg:space-x-4">
+          {/* Right Section - Language and Search */}
+          <div className="flex items-center space-x-4">
             <button
-              className="nav-icon-button"
-              aria-label="Search"
+              onClick={() => setIsSearchOpen(!isSearchOpen)}
+              className="p-2 text-gray-600 hover:text-[#C92536] transition-colors"
+              aria-label="Toggle search"
             >
-              <Search className="h-5 w-5" />
+              {isSearchOpen ? (
+                <X className="h-5 w-5" />
+              ) : (
+                <Search className="h-5 w-5" />
+              )}
             </button>
 
             <button
               onClick={() => i18n.changeLanguage(i18n.language === 'en' ? 'ar' : 'en')}
-              className="nav-icon-button flex items-center space-x-2"
+              className="flex items-center text-gray-600 hover:text-[#C92536] transition-colors"
             >
               <Globe2 className="h-5 w-5" />
-              <span>{t('navigation.language')}</span>
+              <span className="ml-2 text-sm font-medium">العربية</span>
             </button>
           </div>
 
@@ -154,6 +167,36 @@ const Navbar = () => {
           </div>
         </div>
       </div>
+
+      {/* Search Bar */}
+      <AnimatePresence>
+        {isSearchOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            className="absolute top-full left-0 right-0 bg-white shadow-lg border-t border-gray-100"
+          >
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+              <form onSubmit={handleSearch} className="relative">
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Search..."
+                  className="w-full pl-4 pr-12 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C92536] focus:border-transparent"
+                />
+                <button
+                  type="submit"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-[#C92536]"
+                >
+                  <Search className="h-5 w-5" />
+                </button>
+              </form>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Mobile menu */}
       <AnimatePresence>
