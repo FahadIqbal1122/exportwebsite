@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 // import './App.css';
 import Navbar from './components/Navbar';
 import HomePage from './components/HomePage';
@@ -7,6 +7,8 @@ import Achievements from './components/achievements/Achievements';
 import LatestNews from './components/news/LatestNews';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import AboutUs from './pages/AboutUs';
+import ContactUs from './pages/ContactUs';
 import './i18n/i18n';
 import { useTranslation } from 'react-i18next';
 
@@ -23,10 +25,18 @@ function App() {
     <BrowserRouter>
       <div className="min-h-screen">
         <Navbar />
-        <HomePage />
-        <Achievements />
-        <LatestNews />
-        <Contact />
+        <Routes>
+          <Route path="/" element={
+            <>
+              <HomePage />
+              <Achievements />
+              <LatestNews />
+              <Contact />
+            </>
+          } />
+          <Route path="/about-us" element={<AboutUs />} />
+          <Route path="/contact-us" element={<ContactUs />} />
+        </Routes>
         <Footer />
       </div>
     </BrowserRouter>

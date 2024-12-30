@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
 import { Newspaper, Image, Video, FileText } from 'lucide-react';
 import { mediaItems, latestNews, photoGallery, videoGallery, publications } from './mediaData';
 
@@ -11,9 +10,25 @@ interface MediaMegaMenuProps {
 
 const MediaMegaMenu: React.FC<MediaMegaMenuProps> = ({ isOpen, onClose }) => {
   const [activeSection, setActiveSection] = useState('news');
+  const [isHovered, setIsHovered] = useState(false);
+
+  // Handle mouse enter and leave to show and hide the menu
+  const handleMouseEnter = () => setIsHovered(true);
+  const handleMouseLeave = () => setIsHovered(false);
+
+  // Automatically close when not hovered and isOpen is false
+  useEffect(() => {
+    if (!isHovered && !isOpen) {
+      onClose(); // Close the menu when not hovered and isOpen is false
+    }
+  }, [isHovered, isOpen, onClose]);
 
   return (
-    <div className="w-[1000px] -ml-[400px]">
+    <div
+      className={`w-[1000px] -ml-[400px] ${isOpen || isHovered ? 'block' : 'hidden'}`} // Hide menu if not open or not hovered
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
       <div className="flex bg-white">
         {/* Left Sidebar */}
         <div className="w-64 bg-gray-50 py-6">
@@ -28,9 +43,7 @@ const MediaMegaMenu: React.FC<MediaMegaMenuProps> = ({ isOpen, onClose }) => {
                 }`}
                 onMouseEnter={() => setActiveSection(item.id)}
               >
-                <item.icon className={`w-5 h-5 mr-3 ${
-                  activeSection === item.id ? 'text-[#C92536]' : 'text-gray-400'
-                }`} />
+                <item.icon className={`w-5 h-5 mr-3 ${activeSection === item.id ? 'text-[#C92536]' : 'text-gray-400'}`} />
                 <span className="text-sm font-medium">{item.title}</span>
               </button>
             ))}

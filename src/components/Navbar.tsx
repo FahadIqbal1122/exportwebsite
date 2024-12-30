@@ -109,12 +109,18 @@ const Navbar = () => {
 
                 <AnimatePresence>
                   {isMediaMenuOpen && (
-                    <div className="absolute top-full left-0 right-0 bg-white shadow-lg z-50">
+                    <motion.div 
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.2 }}
+                      className="absolute top-full left-0 bg-white shadow-lg z-50"
+                    >
                       <MediaMegaMenu
                         isOpen={isMediaMenuOpen}
                         onClose={() => setIsMediaMenuOpen(false)}
                       />
-                    </div>
+                    </motion.div>
                   )}
                 </AnimatePresence>
               </div>
