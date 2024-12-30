@@ -9,3 +9,20 @@
 .nav-icon-button {
   @apply p-2 text-gray-500 hover:text-[#C92536] transition-colors rounded-full hover:bg-gray-100;
 }
+
+/* Mega Menu Styles */
+.mega-menu-container {
+  @apply relative;
+}
+
+.mega-menu-content {
+  @apply absolute top-full left-0 right-0 w-full bg-white shadow-lg z-50 overflow-hidden;
+  margin-top: -1px;
+}
+
+/* Ensure proper containment for mega menu */
+.nav-container {
+  @apply relative;
+  max-width: 1280px;
+  margin: 0 auto;
+}

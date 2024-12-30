@@ -88,7 +88,7 @@ const Navbar = () => {
 
               {/* Media Center Mega Menu */}
               <div 
-                className="relative group"
+                className="static"
                 onMouseEnter={() => setIsMediaMenuOpen(true)}
                 onMouseLeave={() => setIsMediaMenuOpen(false)}
               >
@@ -101,10 +101,12 @@ const Navbar = () => {
 
                 <AnimatePresence>
                   {isMediaMenuOpen && (
-                    <MediaMegaMenu
-                      isOpen={isMediaMenuOpen}
-                      onClose={() => setIsMediaMenuOpen(false)}
-                    />
+                    <div className="fixed left-0 right-0 w-full bg-white shadow-lg" style={{ top: '64px' }}>
+                      <MediaMegaMenu
+                        isOpen={isMediaMenuOpen}
+                        onClose={() => setIsMediaMenuOpen(false)}
+                      />
+                    </div>
                   )}
                 </AnimatePresence>
               </div>
