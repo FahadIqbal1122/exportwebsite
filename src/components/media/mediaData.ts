@@ -1,3 +1,28 @@
+import { Newspaper, Image, Video, FileText } from 'lucide-react';
+
+export const mediaItems = [
+  {
+    id: 'news',
+    title: 'Latest News',
+    icon: Newspaper
+  },
+  {
+    id: 'images',
+    title: 'Photo Gallery',
+    icon: Image
+  },
+  {
+    id: 'videos',
+    title: 'Videos',
+    icon: Video
+  },
+  {
+    id: 'publications',
+    title: 'Publications',
+    icon: FileText
+  }
+];
+
 export const latestNews = [
   {
     id: 1,
@@ -63,6 +88,7 @@ export const publications = [
     title: "Export Market Analysis 2023",
     cover: "https://placehold.co/300x400/C92536/white?text=Market+Analysis",
     type: "Report",
+    description: "Comprehensive analysis of key export markets and opportunities for Bahraini businesses.",
     downloadUrl: "/downloads/market-analysis-2023.pdf",
   },
   {
@@ -70,6 +96,7 @@ export const publications = [
     title: "Exporter's Guide 2024",
     cover: "https://placehold.co/300x400/C92536/white?text=Exporter's+Guide",
     type: "Guide",
+    description: "Step-by-step guide for businesses looking to start or expand their export operations.",
     downloadUrl: "/downloads/exporters-guide-2024.pdf",
   }
 ];

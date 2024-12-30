@@ -4,11 +4,13 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ChevronDown, Globe2, Search } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { serviceCategories } from './services/serviceData';
+import MediaMegaMenu from './media/MediaMegaMenu';
 import '../styles/navbar.css';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isServiceMenuOpen, setIsServiceMenuOpen] = useState(false);
+  const [isMediaMenuOpen, setIsMediaMenuOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { t, i18n } = useTranslation();
 
@@ -84,9 +86,28 @@ const Navbar = () => {
                 {t('navigation.exhibitions')}
               </Link>
 
-              <Link to="/media-center" className="nav-link">
-                {t('navigation.mediaCenter')}
-              </Link>
+              {/* Media Center Mega Menu */}
+              <div 
+                className="relative group"
+                onMouseEnter={() => setIsMediaMenuOpen(true)}
+                onMouseLeave={() => setIsMediaMenuOpen(false)}
+              >
+                <button
+                  className="nav-link flex items-center"
+                >
+                  <span>{t('navigation.mediaCenter')}</span>
+                  <ChevronDown className="ml-1 h-4 w-4" />
+                </button>
+
+                <AnimatePresence>
+                  {isMediaMenuOpen && (
+                    <MediaMegaMenu
+                      isOpen={isMediaMenuOpen}
+                      onClose={() => setIsMediaMenuOpen(false)}
+                    />
+                  )}
+                </AnimatePresence>
+              </div>
 
               <Link to="/about-us" className="nav-link">
                 {t('navigation.aboutUs')}
