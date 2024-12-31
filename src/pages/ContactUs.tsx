@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, Phone, Mail, Clock } from 'lucide-react';
+import { MapPin, Phone, Mail } from 'lucide-react';
+import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 
 const ContactUs = () => {
   const [formData, setFormData] = useState({
@@ -25,13 +26,18 @@ const ContactUs = () => {
       icon: Mail,
       title: 'Email Us',
       info: 'info@export.bh'
-    },
-    {
-      icon: Clock,
-      title: 'Working Hours',
-      info: 'Sunday - Thursday\n7:30 AM - 3:30 PM'
     }
   ];
+
+  const mapStyles = {
+    height: '400px',
+    width: '100%'
+  };
+
+  const defaultCenter = {
+    lat: 26.238546,
+    lng: 50.586862
+  };
 
   return (
     <div className="pt-20 min-h-screen bg-white dark:bg-gray-900">
@@ -63,67 +69,90 @@ const ContactUs = () => {
               >
                 <item.icon className="w-12 h-12 text-[#C92536] mb-4 mx-auto" />
                 <h2 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">{item.title}</h2>
-                <p className="text-gray-600 dark:text-gray-300">{item.info}</p>
+                <p className="text-gray-600 dark:text-gray-300 whitespace-pre-line">{item.info}</p>
               </motion.div>
             ))}
           </div>
 
-          {/* Contact Form */}
-          <div className="max-w-3xl mx-auto">
-            <form className="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-lg">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <div>
+          {/* Contact Form and Map Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* Contact Form */}
+            <div>
+              <form className="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-lg">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                      Name
+                    </label>
+                    <input
+                      type="text"
+                      className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-[#C92536] focus:border-transparent bg-white dark:bg-gray-900 text-gray-900 dark:text-white"
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                      Email
+                    </label>
+                    <input
+                      type="email"
+                      className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-[#C92536] focus:border-transparent bg-white dark:bg-gray-900 text-gray-900 dark:text-white"
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    />
+                  </div>
+                </div>
+                <div className="mb-6">
                   <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    Name
+                    Subject
                   </label>
                   <input
                     type="text"
                     className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-[#C92536] focus:border-transparent bg-white dark:bg-gray-900 text-gray-900 dark:text-white"
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    value={formData.subject}
+                    onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                   />
                 </div>
-                <div>
+                <div className="mb-6">
                   <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    Email
+                    Message
                   </label>
-                  <input
-                    type="email"
+                  <textarea
+                    rows={4}
                     className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-[#C92536] focus:border-transparent bg-white dark:bg-gray-900 text-gray-900 dark:text-white"
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   />
                 </div>
-              </div>
-              <div className="mb-6">
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  Subject
-                </label>
-                <input
-                  type="text"
-                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-[#C92536] focus:border-transparent bg-white dark:bg-gray-900 text-gray-900 dark:text-white"
-                  value={formData.subject}
-                  onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                />
-              </div>
-              <div className="mb-6">
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  Message
-                </label>
-                <textarea
-                  rows={4}
-                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-[#C92536] focus:border-transparent bg-white dark:bg-gray-900 text-gray-900 dark:text-white"
-                  value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                />
-              </div>
-              <button
-                type="submit"
-                className="w-full bg-[#C92536] text-white py-3 px-6 rounded-lg font-semibold hover:bg-[#a61e2c] dark:hover:bg-[#E93546] transition-colors"
-              >
-                Send Message
-              </button>
-            </form>
+                <button
+                  type="submit"
+                  className="w-full bg-[#C92536] text-white py-3 px-6 rounded-lg font-semibold hover:bg-[#a61e2c] dark:hover:bg-[#E93546] transition-colors"
+                >
+                  Send Message
+                </button>
+              </form>
+            </div>
+
+            {/* Google Map */}
+            <div className="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-lg">
+              <LoadScript googleMapsApiKey="YOUR_GOOGLE_MAPS_API_KEY">
+                <GoogleMap
+                  mapContainerStyle={mapStyles}
+                  zoom={16}
+                  center={defaultCenter}
+                  options={{
+                    styles: [
+                      { elementType: "geometry", stylers: [{ color: "#242f3e" }] },
+                      { elementType: "labels.text.stroke", stylers: [{ color: "#242f3e" }] },
+                      { elementType: "labels.text.fill", stylers: [{ color: "#746855" }] },
+                    ],
+                  }}
+                >
+                  <Marker position={defaultCenter} />
+                </GoogleMap>
+              </LoadScript>
+            </div>
           </div>
         </div>
       </section>
