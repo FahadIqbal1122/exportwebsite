@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ChevronDown, Globe2, Search } from 'lucide-react';
+import { Menu, X, ChevronDown, Globe2, Search, Moon, Sun } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { serviceCategories } from './services/serviceData';
 import MediaMegaMenu from './media/MediaMegaMenu';
+import { useTheme } from '../context/ThemeContext';
 import '../styles/navbar.css';
 
 const Navbar = () => {
@@ -14,6 +15,7 @@ const Navbar = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const { t, i18n } = useTranslation();
+  const { isDarkMode, toggleDarkMode } = useTheme();
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -22,7 +24,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="fixed w-full z-50 bg-white shadow-md">
+    <nav className={`fixed w-full z-50 bg-white dark:bg-gray-900 shadow-md`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           {/* Left - Logo */}
@@ -57,7 +59,7 @@ const Navbar = () => {
                 <AnimatePresence>
                   {isServiceMenuOpen && (
                     <motion.div
-                      className="absolute left-0 mt-2 w-screen max-w-md bg-white rounded-lg shadow-lg ring-1 ring-black ring-opacity-5"
+                      className="absolute left-0 mt-2 w-screen max-w-md bg-white dark:bg-gray-900 rounded-lg shadow-lg ring-1 ring-black ring-opacity-5"
                       initial={{ opacity: 0, y: -10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
@@ -69,13 +71,13 @@ const Navbar = () => {
                           <Link
                             key={service.title}
                             to={service.link}
-                            className="group flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-lg"
+                            className="group flex items-center px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg"
                             onClick={() => setIsServiceMenuOpen(false)}
                           >
-                            <service.icon className="mr-3 h-5 w-5 text-gray-400 group-hover:text-[#C92536]" />
+                            <service.icon className="mr-3 h-5 w-5 text-gray-400 dark:text-gray-500 group-hover:text-[#C92536]" />
                             <div>
                               <p className="font-medium">{service.title}</p>
-                              <p className="text-sm text-gray-500">{service.description}</p>
+                              <p className="text-sm text-gray-500 dark:text-gray-400">{service.description}</p>
                             </div>
                           </Link>
                         ))}
@@ -113,7 +115,7 @@ const Navbar = () => {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
                       transition={{ duration: 0.2 }}
-                      className="absolute top-full left-0 bg-white shadow-lg z-50"
+                      className="absolute top-full left-0 bg-white dark:bg-gray-900 shadow-lg z-50"
                     >
                       <MediaMegaMenu
                         isOpen={isMediaMenuOpen}
@@ -138,7 +140,7 @@ const Navbar = () => {
           <div className="flex items-center space-x-4">
             <button
               onClick={() => setIsSearchOpen(!isSearchOpen)}
-              className="p-2 text-gray-600 hover:text-[#C92536] transition-colors"
+              className="p-2 text-gray-600 dark:text-gray-300 hover:text-[#C92536] transition-colors"
               aria-label="Toggle search"
             >
               {isSearchOpen ? (
@@ -149,8 +151,20 @@ const Navbar = () => {
             </button>
 
             <button
+              onClick={toggleDarkMode}
+              className="p-2 text-gray-600 dark:text-gray-300 hover:text-[#C92536] transition-colors"
+              aria-label="Toggle dark mode"
+            >
+              {isDarkMode ? (
+                <Sun className="h-5 w-5" />
+              ) : (
+                <Moon className="h-5 w-5" />
+              )}
+            </button>
+
+            <button
               onClick={() => i18n.changeLanguage(i18n.language === 'en' ? 'ar' : 'en')}
-              className="flex items-center text-gray-600 hover:text-[#C92536] transition-colors"
+              className="flex items-center text-gray-600 dark:text-gray-300 hover:text-[#C92536] transition-colors"
             >
               <Globe2 className="h-5 w-5" />
               <span className="ml-2 text-sm font-medium">العربية</span>
@@ -161,7 +175,7 @@ const Navbar = () => {
           <div className="lg:hidden flex items-center">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100"
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
             >
               {isMobileMenuOpen ? (
                 <X className="block h-6 w-6" />
@@ -180,7 +194,7 @@ const Navbar = () => {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="absolute top-full left-0 right-0 bg-white shadow-lg border-t border-gray-100"
+            className="absolute top-full left-0 right-0 bg-white dark:bg-gray-900 shadow-lg border-t border-gray-100 dark:border-gray-800"
           >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
               <form onSubmit={handleSearch} className="relative">
@@ -189,11 +203,11 @@ const Navbar = () => {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Search..."
-                  className="w-full pl-4 pr-12 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C92536] focus:border-transparent"
+                  className="w-full pl-4 pr-12 py-3 border border-gray-200 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C92536] focus:border-transparent"
                 />
                 <button
                   type="submit"
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-[#C92536]"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500 hover:text-[#C92536]"
                 >
                   <Search className="h-5 w-5" />
                 </button>
@@ -215,7 +229,7 @@ const Navbar = () => {
             <div className="px-2 pt-2 pb-3 space-y-1">
               <Link
                 to="/"
-                className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+                className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {t('navigation.home')}
@@ -223,7 +237,7 @@ const Navbar = () => {
 
               <Link
                 to="/services"
-                className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+                className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {t('navigation.services')}
@@ -231,7 +245,7 @@ const Navbar = () => {
 
               <Link
                 to="/directory"
-                className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+                className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {t('navigation.exportersDirectory')}
@@ -239,7 +253,7 @@ const Navbar = () => {
 
               <Link
                 to="/exhibitions"
-                className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+                className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {t('navigation.exhibitions')}
@@ -247,7 +261,7 @@ const Navbar = () => {
 
               <Link
                 to="/media-center"
-                className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+                className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {t('navigation.mediaCenter')}
@@ -255,7 +269,7 @@ const Navbar = () => {
 
               <Link
                 to="/about-us"
-                className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+                className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {t('navigation.aboutUs')}
@@ -263,7 +277,7 @@ const Navbar = () => {
 
               <Link
                 to="/contact-us"
-                className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+                className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {t('navigation.contactUs')}
@@ -271,7 +285,7 @@ const Navbar = () => {
 
               <button
                 onClick={() => i18n.changeLanguage(i18n.language === 'en' ? 'ar' : 'en')}
-                className="w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+                className="w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800"
               >
                 <div className="flex items-center">
                   <Globe2 className="mr-3 h-5 w-5" />

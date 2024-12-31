@@ -15,6 +15,7 @@ import {
   Wrench,
   ArrowRight
 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export default function HomePage() {
   return (
@@ -23,9 +24,9 @@ export default function HomePage() {
       <HeroSlider />
 
       {/* Services Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-gray-50 dark:bg-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center mb-12">Our Services</h2>
+          <h2 className="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white">Our Services</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
@@ -91,21 +92,23 @@ export default function HomePage() {
             ].map((service, index) => (
               <motion.div
                 key={service.title}
-                className="bg-white p-6 rounded-lg shadow-lg"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
+                className="bg-white dark:bg-gray-900 rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow"
               >
-                <service.icon className="w-12 h-12 text-[#C92536] mb-4" />
-                <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
-                <p className="text-gray-600 mb-4">{service.description}</p>
-                <motion.a
-                  href={service.link}
-                  className="inline-flex items-center text-[#C92536] hover:text-[#a61e2c] transition-colors"
-                  whileHover={{ x: 5 }}
+                <div className="flex items-center mb-4">
+                  <service.icon className="h-8 w-8 text-[#C92536]" />
+                  <h3 className="text-xl font-semibold ml-3 text-gray-900 dark:text-white">{service.title}</h3>
+                </div>
+                <p className="text-gray-600 dark:text-gray-300 mb-4">{service.description}</p>
+                <Link
+                  to={service.link}
+                  className="inline-flex items-center text-[#C92536] hover:text-[#A91526] dark:hover:text-[#E93546]"
                 >
-                  Learn More <ArrowRight className="w-4 h-4 ml-2" />
-                </motion.a>
+                  Learn More
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
               </motion.div>
             ))}
           </div>

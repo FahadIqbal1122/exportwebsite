@@ -92,11 +92,11 @@ const ExportersDirectory = () => {
   });
 
   return (
-    <div className="min-h-screen bg-gray-50 py-24 px-4 sm:px-6 lg:px-8">
+    <div className="pt-20 min-h-screen bg-gray-50 dark:bg-gray-800 py-24 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="text-center">
-          <h1 className="text-4xl font-bold text-gray-900 mb-8">Exporter's Directory</h1>
-          <p className="text-xl text-gray-600 mb-12">
+          <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-8">Exporter's Directory</h1>
+          <p className="text-xl text-gray-600 dark:text-gray-300 mb-12">
             Find and connect with Bahrain's leading exporters across various sectors
           </p>
         </div>
@@ -107,14 +107,14 @@ const ExportersDirectory = () => {
             <input
               type="text"
               placeholder="Search companies..."
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#C92536] focus:border-transparent"
+              className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-[#C92536] focus:border-transparent"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
-            <Search className="absolute right-3 top-2.5 h-5 w-5 text-gray-400" />
+            <Search className="absolute right-3 top-2.5 h-5 w-5 text-gray-400 dark:text-gray-500" />
           </div>
           <select
-            className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#C92536] focus:border-transparent"
+            className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-[#C92536] focus:border-transparent"
             value={selectedSector}
             onChange={(e) => setSelectedSector(e.target.value)}
           >
@@ -130,7 +130,7 @@ const ExportersDirectory = () => {
             <Link
               to={`/directory/${company.id}`}
               key={company.id}
-              className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-200"
+              className="bg-white dark:bg-gray-900 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-200"
             >
               <div className="relative h-48">
                 <img
@@ -148,16 +148,16 @@ const ExportersDirectory = () => {
                     className="h-12 w-12 object-contain mr-4"
                   />
                   <div>
-                    <h3 className="text-xl font-semibold text-gray-900">{company.name}</h3>
+                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white">{company.name}</h3>
                     <span className="inline-block bg-[#C92536] text-white text-sm px-3 py-1 rounded-full">
                       {company.sector}
                     </span>
                   </div>
                 </div>
                 
-                <p className="text-gray-600 line-clamp-2 mb-4">{company.description}</p>
+                <p className="text-gray-600 dark:text-gray-300 line-clamp-2 mb-4">{company.description}</p>
                 
-                <div className="text-[#C92536] hover:text-[#A61E2B] font-medium">
+                <div className="text-[#C92536] dark:text-[#E93546] hover:text-[#A91526] dark:hover:text-[#C92536] font-medium">
                   View Details →
                 </div>
               </div>
@@ -167,7 +167,7 @@ const ExportersDirectory = () => {
 
         {filteredCompanies.length === 0 && (
           <div className="text-center py-12">
-            <p className="text-gray-600">No companies found matching your criteria.</p>
+            <p className="text-gray-600 dark:text-gray-300">No companies found matching your criteria.</p>
           </div>
         )}
       </div>
