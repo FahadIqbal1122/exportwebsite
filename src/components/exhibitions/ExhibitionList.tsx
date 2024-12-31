@@ -55,7 +55,7 @@ const ExhibitionList = () => {
           <select
             value={selectedCategory}
             onChange={(e) => setSelectedCategory(e.target.value)}
-            className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#C92536] focus:border-transparent"
           >
             {categories.map(category => (
               <option key={category} value={category}>
@@ -75,7 +75,7 @@ const ExhibitionList = () => {
                   alt={exhibition.title}
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute top-4 right-4 bg-blue-600 text-white px-3 py-1 rounded-full text-sm">
+                <div className="absolute top-4 right-4 bg-[#C92536] text-white px-3 py-1 rounded-full text-sm">
                   {exhibition.category}
                 </div>
               </div>
@@ -106,7 +106,7 @@ const ExhibitionList = () => {
 
                 <Link
                   to={`/exhibitions/${exhibition.id}`}
-                  className="inline-block w-full text-center bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors duration-300"
+                  className="inline-block w-full text-center bg-[#C92536] text-white px-6 py-3 rounded-lg hover:bg-[#A61E2B] transition-colors duration-300"
                 >
                   View Details & Register
                 </Link>

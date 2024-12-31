@@ -25,7 +25,7 @@ const ExhibitionDetail = () => {
           <h1 className="text-2xl font-bold text-gray-900">Exhibition not found</h1>
           <button
             onClick={() => navigate('/exhibitions')}
-            className="mt-4 text-blue-600 hover:text-blue-800"
+            className="mt-4 text-[#C92536] hover:text-[#A61E2B]"
           >
             ← Back to Exhibitions
           </button>
@@ -56,7 +56,7 @@ const ExhibitionDetail = () => {
       <div className="max-w-7xl mx-auto">
         <button
           onClick={() => navigate('/exhibitions')}
-          className="mb-8 text-blue-600 hover:text-blue-800 flex items-center"
+          className="mb-8 text-[#C92536] hover:text-[#A61E2B] flex items-center"
         >
           ← Back to Exhibitions
         </button>
@@ -68,7 +68,7 @@ const ExhibitionDetail = () => {
               alt={exhibition.title}
               className="w-full h-full object-cover"
             />
-            <div className="absolute top-4 right-4 bg-blue-600 text-white px-4 py-2 rounded-full">
+            <div className="absolute top-4 right-4 bg-[#C92536] text-white px-4 py-2 rounded-full">
               {exhibition.category}
             </div>
           </div>
@@ -122,7 +122,7 @@ const ExhibitionDetail = () => {
             {!isRegistering ? (
               <button
                 onClick={() => setIsRegistering(true)}
-                className="w-full md:w-auto bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors duration-300"
+                className="w-full md:w-auto bg-[#C92536] text-white px-8 py-3 rounded-lg hover:bg-[#A61E2B] transition-colors duration-300"
               >
                 Register for this Exhibition
               </button>
@@ -141,7 +141,7 @@ const ExhibitionDetail = () => {
                         required
                         value={formData.companyName}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#C92536] focus:border-transparent"
                       />
                     </div>
 
@@ -155,7 +155,7 @@ const ExhibitionDetail = () => {
                         required
                         value={formData.contactPerson}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#C92536] focus:border-transparent"
                       />
                     </div>
 
@@ -169,7 +169,7 @@ const ExhibitionDetail = () => {
                         required
                         value={formData.email}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#C92536] focus:border-transparent"
                       />
                     </div>
 
@@ -183,7 +183,7 @@ const ExhibitionDetail = () => {
                         required
                         value={formData.phone}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#C92536] focus:border-transparent"
                       />
                     </div>
 
@@ -198,7 +198,7 @@ const ExhibitionDetail = () => {
                         required
                         value={formData.numberOfAttendees}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#C92536] focus:border-transparent"
                       />
                     </div>
                   </div>
@@ -212,14 +212,14 @@ const ExhibitionDetail = () => {
                       rows={4}
                       value={formData.specialRequirements}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#C92536] focus:border-transparent"
                     />
                   </div>
 
                   <div className="flex gap-4">
                     <button
                       type="submit"
-                      className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors duration-300"
+                      className="bg-[#C92536] text-white px-8 py-3 rounded-lg hover:bg-[#A61E2B] transition-colors duration-300"
                     >
                       Submit Registration
                     </button>
