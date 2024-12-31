@@ -1,6 +1,5 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { Target, Users, Globe, Award, TrendingUp, Shield } from 'lucide-react';
+import { Target, Globe, Award, TrendingUp, Shield } from 'lucide-react';
 
 const AboutUs = () => {
   return (

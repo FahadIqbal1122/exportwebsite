@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Newspaper, Image, Video, FileText } from 'lucide-react';
+import { Video } from 'lucide-react';
 import { mediaItems, latestNews, photoGallery, videoGallery, publications } from './mediaData';
 
 interface MediaMegaMenuProps {

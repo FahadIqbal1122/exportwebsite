@@ -1,4 +1,3 @@
-import React from 'react';
 import { achievements } from './achievementsData';
 import AchievementCard from './AchievementCard';
 import { useIntersectionObserver } from './useIntersectionObserver';

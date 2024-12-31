@@ -59,7 +59,7 @@ const Navbar = () => {
                 <AnimatePresence>
                   {isServiceMenuOpen && (
                     <motion.div
-                      className="absolute left-0 mt-2 w-screen max-w-md bg-white dark:bg-gray-900 rounded-lg shadow-lg ring-1 ring-black ring-opacity-5"
+                      className="absolute left-0 mt-2 w-screen max-w-md bg-white dark:bg-gray-800 rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 dark:ring-gray-700"
                       initial={{ opacity: 0, y: -10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
@@ -71,10 +71,10 @@ const Navbar = () => {
                           <Link
                             key={service.title}
                             to={service.link}
-                            className="group flex items-center px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg"
+                            className="group flex items-center px-4 py-2 text-sm text-gray-700 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg transition-colors duration-150"
                             onClick={() => setIsServiceMenuOpen(false)}
                           >
-                            <service.icon className="mr-3 h-5 w-5 text-gray-400 dark:text-gray-500 group-hover:text-[#C92536]" />
+                            <service.icon className="mr-3 h-5 w-5 text-gray-400 dark:text-gray-300 group-hover:text-[#C92536] dark:group-hover:text-[#E93546]" />
                             <div>
                               <p className="font-medium">{service.title}</p>
                               <p className="text-sm text-gray-500 dark:text-gray-400">{service.description}</p>
@@ -221,77 +221,33 @@ const Navbar = () => {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            className="lg:hidden"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            className="lg:hidden absolute top-full left-0 right-0 bg-white dark:bg-gray-800 shadow-lg border-t border-gray-100 dark:border-gray-700"
           >
             <div className="px-2 pt-2 pb-3 space-y-1">
-              <Link
-                to="/"
-                className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
+              <Link to="/" className="mobile-nav-link">
                 {t('navigation.home')}
               </Link>
-
-              <Link
-                to="/services"
-                className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
+              <Link to="/services" className="mobile-nav-link">
                 {t('navigation.services')}
               </Link>
-
-              <Link
-                to="/directory"
-                className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
+              <Link to="/directory" className="mobile-nav-link">
                 {t('navigation.exportersDirectory')}
               </Link>
-
-              <Link
-                to="/exhibitions"
-                className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
+              <Link to="/exhibitions" className="mobile-nav-link">
                 {t('navigation.exhibitions')}
               </Link>
-
-              <Link
-                to="/media-center"
-                className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
+              <Link to="/media" className="mobile-nav-link">
                 {t('navigation.mediaCenter')}
               </Link>
-
-              <Link
-                to="/about-us"
-                className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
+              <Link to="/about-us" className="mobile-nav-link">
                 {t('navigation.aboutUs')}
               </Link>
-
-              <Link
-                to="/contact-us"
-                className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
+              <Link to="/contact-us" className="mobile-nav-link">
                 {t('navigation.contactUs')}
               </Link>
-
-              <button
-                onClick={() => i18n.changeLanguage(i18n.language === 'en' ? 'ar' : 'en')}
-                className="w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800"
-              >
-                <div className="flex items-center">
-                  <Globe2 className="mr-3 h-5 w-5" />
-                  <span>{t('navigation.language')}</span>
-                </div>
-              </button>
             </div>
           </motion.div>
         )}

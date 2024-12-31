@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import HeroSlider from './hero/HeroSlider';
 import SuccessSlider from './success/SuccessSlider';
