@@ -18,7 +18,7 @@ import { Link } from 'react-router-dom';
 
 export default function HomePage() {
   return (
-    <div className="pt-20">
+    <div className="pt-16">
       {/* Hero Section */}
       <HeroSlider />
 

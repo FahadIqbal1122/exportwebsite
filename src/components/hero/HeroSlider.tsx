@@ -2,33 +2,7 @@ import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import SlideContent from './SlideContent';
 import SliderControls from './SliderControls';
-
-const slides = [
-  {
-    id: 1,
-    image: '/images/hero/slider1.png',
-    title: 'Export Promotion',
-    description: 'Supporting Bahraini businesses in their export journey',
-    ctaText: 'Learn More',
-    ctaLink: '/services/export-promotion'
-  },
-  {
-    id: 2,
-    image: '/images/hero/slider2.png',
-    title: 'Market Access',
-    description: 'Opening doors to international markets',
-    ctaText: 'Explore Markets',
-    ctaLink: '/services/market-access'
-  },
-  {
-    id: 3,
-    image: '/images/hero/slider3.jpg',
-    title: 'Export Solutions',
-    description: 'Comprehensive solutions for exporters',
-    ctaText: 'View Solutions',
-    ctaLink: '/services/solutions'
-  },
-];
+import { slides } from './heroData';
 
 const HeroSlider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
