@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Calendar, MapPin, Clock, Users, Building } from 'lucide-react';
+import { Calendar, MapPin, Clock } from 'lucide-react';
 import { exhibitions } from './ExhibitionList';
 
 const ExhibitionDetail = () => {

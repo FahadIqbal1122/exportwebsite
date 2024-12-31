@@ -8,7 +8,6 @@ import MediaMegaMenu from './media/MediaMegaMenu';
 import '../styles/navbar.css';
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
   const [isServiceMenuOpen, setIsServiceMenuOpen] = useState(false);
   const [isMediaMenuOpen, setIsMediaMenuOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
