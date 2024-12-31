@@ -40,11 +40,11 @@ const ExhibitionList = () => {
   );
 
   return (
-    <div className="min-h-screen bg-gray-50 py-24 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-24 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Upcoming Exhibitions</h1>
-          <p className="text-xl text-gray-600">
+          <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">Upcoming Exhibitions</h1>
+          <p className="text-xl text-gray-600 dark:text-gray-300">
             Discover and register for upcoming trade exhibitions and events
           </p>
         </div>
@@ -54,7 +54,7 @@ const ExhibitionList = () => {
           <select
             value={selectedCategory}
             onChange={(e) => setSelectedCategory(e.target.value)}
-            className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#C92536] focus:border-transparent"
+            className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-[#C92536] dark:focus:ring-[#E93546] focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
           >
             {categories.map(category => (
               <option key={category} value={category}>
@@ -67,45 +67,45 @@ const ExhibitionList = () => {
         {/* Exhibition Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredExhibitions.map((exhibition) => (
-            <div key={exhibition.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+            <div key={exhibition.id} className="bg-white dark:bg-gray-800 rounded-lg shadow-md dark:shadow-gray-800/30 overflow-hidden hover:shadow-lg dark:hover:shadow-gray-800/50 transition-shadow duration-300">
               <div className="relative h-48">
                 <img
                   src={exhibition.image}
                   alt={exhibition.title}
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute top-4 right-4 bg-[#C92536] text-white px-3 py-1 rounded-full text-sm">
+                <div className="absolute top-4 right-4 bg-[#C92536] dark:bg-[#E93546] text-white px-3 py-1 rounded-full text-sm">
                   {exhibition.category}
                 </div>
               </div>
               
               <div className="p-6">
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
                   {exhibition.title}
                 </h3>
                 
                 <div className="space-y-2 mb-4">
-                  <div className="flex items-center text-gray-600">
+                  <div className="flex items-center text-gray-600 dark:text-gray-300">
                     <Calendar className="h-5 w-5 mr-2" />
                     <span>{new Date(exhibition.date).toLocaleDateString()} - {new Date(exhibition.endDate).toLocaleDateString()}</span>
                   </div>
-                  <div className="flex items-center text-gray-600">
+                  <div className="flex items-center text-gray-600 dark:text-gray-300">
                     <MapPin className="h-5 w-5 mr-2" />
                     <span>{exhibition.location}</span>
                   </div>
-                  <div className="flex items-center text-gray-600">
+                  <div className="flex items-center text-gray-600 dark:text-gray-300">
                     <Clock className="h-5 w-5 mr-2" />
                     <span>Registration Deadline: {new Date(exhibition.registrationDeadline).toLocaleDateString()}</span>
                   </div>
                 </div>
 
-                <p className="text-gray-600 mb-6 line-clamp-2">
+                <p className="text-gray-600 dark:text-gray-300 mb-6 line-clamp-2">
                   {exhibition.description}
                 </p>
 
                 <Link
                   to={`/exhibitions/${exhibition.id}`}
-                  className="inline-block w-full text-center bg-[#C92536] text-white px-6 py-3 rounded-lg hover:bg-[#A61E2B] transition-colors duration-300"
+                  className="inline-block w-full text-center bg-[#C92536] dark:bg-[#E93546] text-white px-6 py-3 rounded-lg hover:bg-[#A61E2B] dark:hover:bg-[#ff4d5e] transition-colors duration-300"
                 >
                   View Details & Register
                 </Link>
@@ -116,7 +116,7 @@ const ExhibitionList = () => {
 
         {filteredExhibitions.length === 0 && (
           <div className="text-center py-12">
-            <p className="text-gray-600">No exhibitions found in this category.</p>
+            <p className="text-gray-600 dark:text-gray-300">No exhibitions found in this category.</p>
           </div>
         )}
       </div>
