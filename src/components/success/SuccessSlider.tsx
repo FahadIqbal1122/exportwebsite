@@ -124,7 +124,7 @@ const SuccessSlider = () => {
                   <img 
                     src={successStories[currentSlide].logo} 
                     alt="Company Logo" 
-                    className="h-16 w-auto mb-6"
+                    className="h-32 w-48 object-contain mb-6"
                   />
                   <h3 className="text-3xl font-bold text-gray-900 mb-4">
                     {successStories[currentSlide].companyName}
