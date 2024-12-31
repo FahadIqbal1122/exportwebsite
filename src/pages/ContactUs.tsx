@@ -26,7 +26,7 @@ const ContactUs = () => {
               {
                 icon: MapPin,
                 title: 'Visit Us',
-                info: 'Bahrain Financial Harbor, East Tower, Level 14, King Faisal Highway, Manama'
+                info: 'Bahrain Financial Harbor, Harbour Gate, Level 5, King Faisal Highway, Manama'
               },
               {
                 icon: Phone,

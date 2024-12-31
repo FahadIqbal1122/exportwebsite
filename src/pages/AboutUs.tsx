@@ -43,8 +43,7 @@ const AboutUs = () => {
               <Globe className="w-12 h-12 text-[#C92536] mb-4" />
               <h2 className="text-2xl font-bold mb-4">Our Vision</h2>
               <p className="text-gray-600">
-                To be the catalyst for Bahrain's export growth, making Bahraini products and services 
-                globally recognized and preferred in international markets.
+              Support Exporters in Bahrain to identify and capture global market opportunities.
               </p>
             </motion.div>
           </div>
@@ -116,18 +115,18 @@ const AboutUs = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
-                name: 'Dr. Ahmed Al Sayed',
+                name: 'Safa Sharif A Khaliq',
                 position: 'Chief Executive Officer',
                 bio: 'Over 20 years of experience in international trade and economic development'
               },
               {
-                name: 'Sarah Al Khalifa',
-                position: 'Director of Operations',
+                name: 'Fatima Rostam',
+                position: 'Executive Director',
                 bio: 'Expert in export facilitation and trade logistics'
               },
               {
-                name: 'Mohammed Al Baker',
-                position: 'Head of Market Development',
+                name: 'Marwa Mohammed',
+                position: 'Human Resource & Finance Control Manager',
                 bio: 'Specialist in international market expansion and trade relations'
               }
             ].map((member, index) => (
