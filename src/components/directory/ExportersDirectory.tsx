@@ -1,21 +1,90 @@
-import  { useState } from 'react';
+import { useState } from 'react';
 import { Search } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 // Mock data for companies (replace with actual data later)
-const mockCompanies = [
-  { id: 1, name: 'Company A', sector: 'Manufacturing', description: 'Manufacturing company specializing in aluminum products' },
-  { id: 2, name: 'Company B', sector: 'Food & Beverage', description: 'Food processing and export company' },
-  { id: 3, name: 'Company C', sector: 'Technology', description: 'Software development and IT services' },
-  // Add more mock companies as needed
+export const companies = [
+  {
+    id: 1,
+    name: 'Alba',
+    sector: 'Manufacturing',
+    description: 'One of the world\'s largest aluminium smelters.',
+    logo: 'https://tse3.mm.bing.net/th/id/OIP.wRdV4Mqyu8anFSA0R6fBdQEsEs?rs=1&pid=ImgDetMain',
+    banner: 'https://www.bahrainthisweek.com/wp-content/uploads/2021/06/WPnewsize-4-1068x601.jpg',
+    image: 'https://www.bahrainthisweek.com/wp-content/uploads/2021/06/WPnewsize-4-1068x601.jpg',
+    website: 'https://www.albasmelter.com',
+    instagram: 'https://www.instagram.com/albasmelter',
+    bookletUrl: '/company-profiles/alba-profile.pdf',
+    products: [
+      {
+        name: 'Aluminium Billets',
+        image: 'https://5.imimg.com/data5/SELLER/Default/2021/10/HR/GZ/ZP/16656670/aluminum-extrusion-billet-1000x1000.jpg',
+        description: 'High-quality aluminium billets for various industrial applications'
+      },
+      {
+        name: 'Aluminium Slabs',
+        image: 'https://tse3.mm.bing.net/th/id/OIP.DHeZ_wXW5oCWArIM67U3YQAAAA?rs=1&pid=ImgDetMain',
+        description: 'Premium aluminium slabs for manufacturing needs'
+      }
+    ]
+  },
+  {
+    id: 2,
+    name: 'GPIC',
+    sector: 'Chemicals',
+    description: 'Leading producer of fertilizers and petrochemical products.',
+    logo: 'https://tse1.mm.bing.net/th/id/OIP.5maslKZ7zu-jctZ90AE7-wAAAA?rs=1&pid=ImgDetMain',
+    banner: 'https://www.gpca.org.ae/wp-content/uploads/2020/07/GPIC.jpg',
+    image: 'https://www.gpca.org.ae/wp-content/uploads/2020/07/GPIC.jpg',
+    website: 'https://www.gpic.com',
+    instagram: 'https://www.instagram.com/gpicbahrain',
+    bookletUrl: '/company-profiles/gpic-profile.pdf',
+    products: [
+      {
+        name: 'Ammonia',
+        image: 'https://tse3.mm.bing.net/th/id/OIP.Q5pwes7WgqWz4ZwpoZSVYQAAAA?rs=1&pid=ImgDetMain',
+        description: 'High-purity ammonia for industrial use'
+      },
+      {
+        name: 'Urea',
+        image: 'https://tse4.mm.bing.net/th/id/OIP.g6trhAIonEwzCmb77Zoh0QHaHa?rs=1&pid=ImgDetMain',
+        description: 'Premium quality urea fertilizer'
+      }
+    ]
+  },
+  {
+    id: 3,
+    name: 'Banz Group',
+    sector: 'Food & Beverage',
+    description: 'Leading food manufacturing and distribution company.',
+    logo: 'https://images.squarespace-cdn.com/content/v1/60a60b51f86d4d759fb477fb/6c1587b8-45bc-4342-8867-995b5c820849/BTC+web-11.png',
+    banner: 'https://images.squarespace-cdn.com/content/v1/60a60b51f86d4d759fb477fb/6c1587b8-45bc-4342-8867-995b5c820849/BTC+web-11.png',
+    image: 'https://images.squarespace-cdn.com/content/v1/60a60b51f86d4d759fb477fb/6c1587b8-45bc-4342-8867-995b5c820849/BTC+web-11.png',
+    website: 'https://www.banzgroup.com',
+    instagram: 'https://www.instagram.com/banzgroup',
+    bookletUrl: '/company-profiles/banz-profile.pdf',
+    products: [
+      {
+        name: 'Dairy Products',
+        image: 'https://tse4.mm.bing.net/th/id/OIP.2tZQhScciCQtQrZgawkdGQHaFK?rs=1&pid=ImgDetMain',
+        description: 'Fresh and processed dairy products'
+      },
+      {
+        name: 'Beverages',
+        image: 'https://tse1.mm.bing.net/th/id/OIP.4muOY9iB3zdrQUmElQs2pwHaE7?rs=1&pid=ImgDetMain',
+        description: 'Wide range of refreshing beverages'
+      }
+    ]
+  }
 ];
-
-const sectors = ['All', 'Manufacturing', 'Food & Beverage', 'Technology', 'Textiles', 'Chemicals'];
 
 const ExportersDirectory = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedSector, setSelectedSector] = useState('All');
 
-  const filteredCompanies = mockCompanies.filter(company => {
+  const sectors = ['All', 'Manufacturing', 'Food & Beverage', 'Chemicals', 'Technology', 'Textiles'];
+
+  const filteredCompanies = companies.filter(company => {
     const matchesSearch = company.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
                          company.description.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesSector = selectedSector === 'All' || company.sector === selectedSector;
@@ -58,19 +127,41 @@ const ExportersDirectory = () => {
         {/* Companies Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredCompanies.map(company => (
-            <div
+            <Link
+              to={`/directory/${company.id}`}
               key={company.id}
-              className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200"
+              className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-200"
             >
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">{company.name}</h3>
-              <span className="inline-block bg-[#C92536] text-white text-sm px-3 py-1 rounded-full mb-3">
-                {company.sector}
-              </span>
-              <p className="text-gray-600">{company.description}</p>
-              <button className="mt-4 text-[#C92536] hover:text-[#A61E2B] font-medium">
-                View Details →
-              </button>
-            </div>
+              <div className="relative h-48">
+                <img
+                  src={company.image}
+                  alt={company.name}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              
+              <div className="p-6">
+                <div className="flex items-center mb-4">
+                  <img
+                    src={company.logo}
+                    alt={`${company.name} logo`}
+                    className="h-12 w-12 object-contain mr-4"
+                  />
+                  <div>
+                    <h3 className="text-xl font-semibold text-gray-900">{company.name}</h3>
+                    <span className="inline-block bg-[#C92536] text-white text-sm px-3 py-1 rounded-full">
+                      {company.sector}
+                    </span>
+                  </div>
+                </div>
+                
+                <p className="text-gray-600 line-clamp-2 mb-4">{company.description}</p>
+                
+                <div className="text-[#C92536] hover:text-[#A61E2B] font-medium">
+                  View Details →
+                </div>
+              </div>
+            </Link>
           ))}
         </div>
 

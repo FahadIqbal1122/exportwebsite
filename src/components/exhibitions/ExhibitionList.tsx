@@ -6,27 +6,27 @@ import { useState } from 'react';
 export const exhibitions = [
   {
     id: 1,
-    title: 'Bahrain International Manufacturing & Industry Exhibition',
+    title: 'Autumn Fair Bahrain',
     date: '2024-02-15',
     endDate: '2024-02-17',
     location: 'Exhibition World Bahrain',
-    image: '/exhibition1.jpg',
+    image: 'https://tse2.mm.bing.net/th/id/OIP.SWUR3mOxR9VR71pf4R1MRwHaEK?rs=1&pid=ImgDetMain',
     description: 'The largest manufacturing and industry exhibition in Bahrain showcasing the latest technologies and innovations.',
     status: 'upcoming',
     registrationDeadline: '2024-02-10',
-    category: 'Manufacturing'
+    category: 'Expo'
   },
   {
     id: 2,
-    title: 'Food & Hospitality Expo',
+    title: 'Retro Bahrain',
     date: '2024-03-20',
     endDate: '2024-03-22',
-    location: 'Bahrain International Exhibition Center',
-    image: '/exhibition2.jpg',
-    description: 'Connecting food industry professionals with local and international suppliers.',
+    location: 'Manama Souq',
+    image: 'https://th.bing.com/th/id/R.35ddcd99b88be741536581c2e51ae64e?rik=t1jMphBVQ4WBuw&riu=http%3a%2f%2fwww.guideoftheworld.com%2fwp-content%2fuploads%2fphotos%2fbab_al_bahrain_square_manama.jpg&ehk=8rFWrbSxkjrG6ujPeUsKcNQWB8nBUFrbrQZF8kRTlQM%3d&risl=&pid=ImgRaw&r=0',
+    description: 'Bringing back 80s vibes.',
     status: 'upcoming',
     registrationDeadline: '2024-03-15',
-    category: 'Food & Beverage'
+    category: 'Public Event'
   },
   // Add more exhibitions as needed
 ];

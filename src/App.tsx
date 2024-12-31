@@ -10,6 +10,7 @@ import Footer from './components/Footer';
 import AboutUs from './pages/AboutUs';
 import ContactUs from './pages/ContactUs';
 import ExportersDirectory from './components/directory/ExportersDirectory';
+import CompanyDetail from './components/directory/CompanyDetail';
 import ExhibitionList from './components/exhibitions/ExhibitionList';
 import ExhibitionDetail from './components/exhibitions/ExhibitionDetail';
 import './i18n/i18n';
@@ -40,6 +41,7 @@ function App() {
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/directory" element={<ExportersDirectory />} />
+          <Route path="/directory/:id" element={<CompanyDetail />} />
           <Route path="/exhibitions" element={<ExhibitionList />} />
           <Route path="/exhibitions/:id" element={<ExhibitionDetail />} />
         </Routes>
