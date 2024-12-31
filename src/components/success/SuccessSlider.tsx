@@ -69,7 +69,7 @@ const SuccessSlider = () => {
   };
 
   return (
-    <div className="relative bg-gray-50 py-20">
+    <div className="relative bg-gray-50 py-20 dark:bg-gray-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div 
           className="text-center mb-16"
@@ -77,8 +77,8 @@ const SuccessSlider = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="section-title text-center inline-block">Success Stories</h2>
-          <p className="text-xl text-gray-600 mt-8">
+          <h2 className="section-title text-center inline-block text-gray-900 dark:text-white">Success Stories</h2>
+          <p className="text-xl text-gray-600 mt-8 dark:text-gray-300">
             See how businesses like yours achieved global success
           </p>
         </motion.div>
@@ -102,7 +102,7 @@ const SuccessSlider = () => {
             >
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 h-full">
                 <motion.div 
-                  className="relative overflow-hidden rounded-lg shadow-lg"
+                  className="relative overflow-hidden rounded-lg shadow-lg dark:shadow-gray-800/30"
                   initial={{ opacity: 0, x: -50 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.2 }}
@@ -124,28 +124,28 @@ const SuccessSlider = () => {
                   <img 
                     src={successStories[currentSlide].logo} 
                     alt="Company Logo" 
-                    className="h-32 w-48 object-contain mb-6"
+                    className="h-32 w-48 object-contain mb-6 dark:brightness-100"
                   />
-                  <h3 className="text-3xl font-bold text-gray-900 mb-4">
+                  <h3 className="text-3xl font-bold text-gray-900 mb-4 dark:text-white">
                     {successStories[currentSlide].companyName}
                   </h3>
-                  <p className="text-lg text-gray-600 mb-6">
+                  <p className="text-lg text-gray-600 mb-6 dark:text-gray-300">
                     {successStories[currentSlide].description}
                   </p>
-                  <div className="bg-white rounded-lg p-6 shadow-md">
+                  <div className="bg-white rounded-lg p-6 shadow-md dark:bg-gray-800 dark:shadow-gray-800/30">
                     <div className="flex items-center justify-between mb-4">
-                      <span className="text-gray-600">Industry</span>
-                      <span className="font-semibold">{successStories[currentSlide].industry}</span>
+                      <span className="text-gray-600 dark:text-gray-400">Industry</span>
+                      <span className="font-semibold text-gray-900 dark:text-white">{successStories[currentSlide].industry}</span>
                     </div>
                     <div className="flex items-center justify-between mb-4">
-                      <span className="text-gray-600">Achievement</span>
-                      <span className="font-semibold text-[#C92536]">
+                      <span className="text-gray-600 dark:text-gray-400">Achievement</span>
+                      <span className="font-semibold text-[#C92536] dark:text-[#E93546]">
                         {successStories[currentSlide].achievement}
                       </span>
                     </div>
                     <div className="flex items-center justify-between">
-                      <span className="text-gray-600">Year</span>
-                      <span className="font-semibold">{successStories[currentSlide].year}</span>
+                      <span className="text-gray-600 dark:text-gray-400">Year</span>
+                      <span className="font-semibold text-gray-900 dark:text-white">{successStories[currentSlide].year}</span>
                     </div>
                   </div>
                 </motion.div>
@@ -155,7 +155,7 @@ const SuccessSlider = () => {
 
           {/* Navigation Buttons */}
           <motion.button
-            className="absolute left-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white shadow-lg text-gray-800 hover:bg-gray-50 z-10"
+            className="absolute left-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white shadow-lg text-gray-800 hover:bg-gray-50 z-10 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700 dark:shadow-gray-800/30"
             onClick={prevSlide}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
@@ -164,7 +164,7 @@ const SuccessSlider = () => {
           </motion.button>
 
           <motion.button
-            className="absolute right-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white shadow-lg text-gray-800 hover:bg-gray-50 z-10"
+            className="absolute right-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white shadow-lg text-gray-800 hover:bg-gray-50 z-10 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700 dark:shadow-gray-800/30"
             onClick={nextSlide}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
@@ -181,8 +181,8 @@ const SuccessSlider = () => {
                   setDirection(index > currentSlide ? 1 : -1);
                   setCurrentSlide(index);
                 }}
-                className={`w-3 h-3 rounded-full ${
-                  index === currentSlide ? 'bg-[#C92536]' : 'bg-gray-300'
+                className={`w-3 h-3 rounded-full transition-colors ${
+                  index === currentSlide ? 'bg-[#C92536] dark:bg-[#E93546]' : 'bg-gray-300 dark:bg-gray-600'
                 }`}
                 whileHover={{ scale: 1.2 }}
                 whileTap={{ scale: 0.9 }}

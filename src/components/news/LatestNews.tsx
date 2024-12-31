@@ -4,11 +4,11 @@ import NewsCard from './NewsCard';
 
 export default function LatestNews() {
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-20 bg-gray-50 dark:bg-gray-900 transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#54585A]">Latest News</h2>
-          <p className="mt-4 text-lg text-gray-600">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#54585A] dark:text-white">Latest News</h2>
+          <p className="mt-4 text-lg text-gray-600 dark:text-gray-300">
             Stay updated with the latest developments in international trade
           </p>
         </div>
@@ -22,7 +22,7 @@ export default function LatestNews() {
         <div className="text-center mt-12">
           <a
             href="/news"
-            className="inline-flex items-center px-6 py-3 bg-[#C92536] text-white rounded-md hover:bg-[#a61e2c] transition-colors"
+            className="inline-flex items-center px-6 py-3 bg-[#C92536] text-white rounded-md hover:bg-[#a61e2c] dark:bg-[#E93546] dark:hover:bg-[#ff4d5e] transition-colors"
           >
             View All News
           </a>

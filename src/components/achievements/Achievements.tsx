@@ -10,11 +10,11 @@ export default function Achievements() {
   });
 
   return (
-    <section className="py-20 bg-gray-50" ref={elementRef}>
+    <section className="py-20 bg-gray-50 dark:bg-gray-900 transition-colors" ref={elementRef}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#54585A]">Our Achievements</h2>
-          <p className="mt-4 text-lg text-gray-600">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#54585A] dark:text-white">Our Achievements</h2>
+          <p className="mt-4 text-lg text-gray-600 dark:text-gray-300">
             Milestones that showcase our commitment to excellence
           </p>
         </div>
